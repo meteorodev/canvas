@@ -74,7 +74,7 @@ function print() {
     }
 
     //console.log(piecePosition.length);
-    document.onmousedown = mousePosition;
+    
 }
 
 
@@ -132,21 +132,32 @@ function getCanvan(dif) {
     mouse = {x: 0, y: 0};
     //add mousemove event into the document
     //document.onmousemove =overCanvas;
-
-
+    canvas.onmousedown = mousePosition;
+    canvas.onmousemove = pintDrag;
+    canvas.addEventListener("mouseup", function () {
+        console.log("Drag disable");
+        dragable = 0;
+    }, false);
+    canvas.ondblclick = repaint;
 }
 
 //get the mouse position base on canvas
 function mousePosition(e) {
-
+    dragable = 1;
     mouse.x = e.offsetX;
     mouse.y = e.offsetY;
     //console.log("e.layer by x: " + e.layerX + " : " + canvas.offsetLeft + " : " + e.offsetX);
     //console.log("e.layer by x: " + e.layerY + " : " + canvas.offsetTop + " : " + e.offsetY);
     checkPieceClicked();
-    document.ondblclick = repaint;
+    console.log("enable drag");
     //stage.drawImage(img2, mouse.x, mouse.y, 80, 236);
     return mouse;
+}
+
+function pintDrag() {
+    if (dragable === 1) {
+        console.log("panted drag positions");
+    }
 }
 
 function checkPieceClicked() {
@@ -213,7 +224,7 @@ function moveTolast() {
 /*find wich piece was clicked*/
 
 function pieceMove(i) {
-    if (checkPieceClicked()!==null){
+    if (checkPieceClicked() !== null) {
         var nx, ny, ncx, ncy;
         nx = mouse.x - piecePosition[i].cx;
         ny = mouse.y - piecePosition[i].cy;
