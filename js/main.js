@@ -26,7 +26,7 @@ function init() {
     canvasHeight = 600;
     loadImage();
     loadPieces(paths, function () {
-        console.log("size of pieces " + pieces.length);
+        //console.log("size of pieces " + pieces.length);
         print();
 
     });
@@ -50,9 +50,9 @@ function loadPieces(paths, whenLoaded) {
         };
         setTimeout(function () {
             imgT.src = path;
+
         }, 1);
     });
-    console.log("pieces length out foreach " + pieces.length);
     //return pieces;
 
 }
@@ -61,22 +61,23 @@ function loadPieces(paths, whenLoaded) {
 function print() {
     //compute the ceter of each image
     var prx, pry, wi, he;
-    for (i = 0; i < pieces.length; i++) {
-        prx = Math.floor(Math.random() * pieces[i].width);
-        pry = Math.floor(Math.random() * pieces[i].height);
+    for (i = 0; i < 8 /*pieces.length*/; i++) {
+        prx = Math.floor(Math.random() * (pieces[i].width / 2));
+        pry = Math.floor(Math.random() * (pieces[i].height / 2));
         wi = Math.floor(pieces[i].width * factor);
         he = Math.floor(pieces[i].height * factor);
 
         piecePosition[i] = {opx: prx, opy: pry, cx: (prx + (wi / 2)), cy: (pry + (he / 2)), wi: wi, he: he};
-        console.log("imge added {" + wi + " : " + he + "} image in " + pieces[i].src + "\n" +
-                "start position  {" + piecePosition[i].opx + " : " + piecePosition[i].opy + "}\n" +
-                "final pos  {" + (prx + wi) + " : " + (pry + he) + "}" + "\n" +
-                "center pos {" + piecePosition[i].cx + " : " + piecePosition[i].cy + "}\n");
-        printCoor(i, prx, pry, piecePosition[i].cx, piecePosition[i].cy, wi, he);
+//        console.log("imge added {" + wi + " : " + he + "} image in " + pieces[i].src + "\n" +
+//                "start position  {" + piecePosition[i].opx + " : " + piecePosition[i].opy + "}\n" +
+//                "final pos  {" + (prx + wi) + " : " + (pry + he) + "}" + "\n" +
+//                "center pos {" + piecePosition[i].cx + " : " + piecePosition[i].cy + "}\n");
+        //printCoor(i, prx, pry, piecePosition[i].cx, piecePosition[i].cy, wi, he);
         stage.drawImage(pieces[i], prx, pry, wi, he);
     }
+
     //console.log(piecePosition.length);
-    document.onmouseup = mousePosition;
+    document.onmousedown = mousePosition;
 }
 
 
@@ -100,7 +101,6 @@ function printCoor(num, rx, ry, cx, cy, wi, he) {
     stage.fillText((rx + wi) + " " + (ry + he), (rx + wi), (ry + he));
     stage.fillText(cx + " " + cy, cx, cy);
     stage.fillText(rx + " " + ry, rx, ry);
-//    console.log(cx);
     stage.strokeStyle = "#00FF00";
     stage.beginPath();
     stage.lineWidth = 1;
@@ -136,7 +136,7 @@ function getCanvan(dif) {
     //add mousemove event into the document
     //document.onmousemove =overCanvas;
 
-    //document.onmousemove = mousePosition;
+
 }
 
 //get the mouse position base on canvas
@@ -144,34 +144,74 @@ function mousePosition(e) {
 
     mouse.x = e.offsetX;
     mouse.y = e.offsetY;
-    console.log("e.layer by x: " + e.layerX + " : " + canvas.offsetLeft + " : " + e.offsetX);
-    console.log("e.layer by x: " + e.layerY + " : " + canvas.offsetTop + " : " + e.offsetY);
+    //console.log("e.layer by x: " + e.layerX + " : " + canvas.offsetLeft + " : " + e.offsetX);
+    //console.log("e.layer by x: " + e.layerY + " : " + canvas.offsetTop + " : " + e.offsetY);
     checkPieceClicked();
+    document.ondblclick = repaint;
     //stage.drawImage(img2, mouse.x, mouse.y, 80, 236);
     return mouse;
 }
 
 function checkPieceClicked() {
-    var i;
+    var i=pieces.length-1;
     var piece;
-    console.log("pieces length " + pieces.lengt)
-    for (i = 0; i < pieces.length; i++) {
+    //for (i = 0; i < pieces.length; i++) {
         piece = pieces[i];
-        console.log("mouse   x: " + mouse.x + " y: " + mouse.y + "\n" +
-                "init p  x: " + piecePosition.opx + " y: " + piecePosition.opy + "\n" +
-                "final p x: " + (piecePosition.opx + piecePosition.wi) + " y: " + (piecePosition.opy + piecePosition.he));
-        if (mouse.x < piecePosition.opx && mouse.x > (piecePosition.opx + piecePosition.wi) &&
-                mouse.y < piecePosition.opy && mouse.y > (piecePosition.opy + piecePosition.he)) {
-            console.log("pieces clicked !! " + piece.src);
-            return piece;
-        } else {
-            console.log("no pieces was click !! ");
-            return null;
+        printCoor(0, piecePosition[i].opx, piecePosition[i].opy, piecePosition[i].cx, piecePosition[i].cy, piecePosition[i].wi, piecePosition[i].he)
+//        console.log("init p  x: " + piecePosition[i].opx + " y: " + piecePosition[i].opy + "\n" +
+//                "mouse   x: " + mouse.x + " y: " + mouse.y + "\n" +
+//                "final p x: " + (piecePosition[i].opx + piecePosition[i].wi) + " y: " + (piecePosition[i].opy + piecePosition[i].he));
+        try {
+            if (mouse.x > piecePosition[i].opx && mouse.x < (piecePosition[i].opx + piecePosition[i].wi) &&
+                    mouse.y > piecePosition[i].opy && mouse.y < (piecePosition[i].opy + piecePosition[i].he)) {
+                console.log(i + " pieces clicked !! " + piece.src);
+                return piece;
+            }
+        } catch (err) {
+
         }
-    }
+    //}
+    pieces[0].style.zIndex = 50;
+    return null;
 
 }
 
+
+/*function that repaint the pieces in a new position*/
+function repaint() {
+    moveTolast();
+    //clear teh canvas
+   // console.log("propiedad new opx "+piecePosition[i].opx);
+    stage.clearRect(0, 0, canvasWidth, canvasHeight);
+    for (var i = 0; i < pieces.length; i++) {
+        
+        stage.drawImage(pieces[i], piecePosition[i].opx, piecePosition[i].opy, piecePosition[i].wi, piecePosition[i].he);
+    }
+}
+
+/*Function that reorder the position that the images is painted*/
+
+function moveTolast() {
+    var newPosition = [];
+    var newPaths = [];
+    var newpiecesPositions = [];
+    newPosition[0] = pieces[pieces.length - 1];
+    newPaths[0] = paths[pieces.length - 1];
+    newpiecesPositions[0] = piecePosition[pieces.length - 1];
+    console.log("nuevas longitudas "+pieces.length +" "+pieces.length +" "+pieces.length );
+    console.log("propiedad new opx 0 "+piecePosition[0].opx);
+    for (var i = 0; i < pieces.length - 1; i++) {
+        newPosition[i + 1] = pieces[i];
+        newPaths[i + 1] = paths[i];
+        newpiecesPositions[i + 1] = piecePosition[i];
+        console.log("propiedad opx for [i] ="+i+" move to "+piecePosition[i].opx);
+    }
+    pieces = newPosition;
+    piecePosition = newpiecesPositions;
+    paths = newPaths;
+    console.log("propiedad new opx "+piecePosition[0].opx);
+    console.log("nuevas longitudas "+pieces.length +" "+pieces.length +" "+pieces.length );
+}
 
 /*find wich piece was clicked*/
 
