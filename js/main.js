@@ -8,10 +8,7 @@ var picture;
 var pieces = [];
 var canvasWidth;
 var canvasHeight;
-var currentPiece;
-var currentDropPiece;
-var temX;
-var temY;
+var dragable = 0;
 var mouse;
 //contains the position for each piece star position and end position 
 var piecePosition = [];
@@ -153,25 +150,25 @@ function mousePosition(e) {
 }
 
 function checkPieceClicked() {
-    var i=pieces.length-1;
+    var i = pieces.length - 1;
     var piece;
     //for (i = 0; i < pieces.length; i++) {
-        piece = pieces[i];
-        printCoor(0, piecePosition[i].opx, piecePosition[i].opy, piecePosition[i].cx, piecePosition[i].cy, piecePosition[i].wi, piecePosition[i].he)
+    piece = pieces[i];
+    printCoor(0, piecePosition[i].opx, piecePosition[i].opy, piecePosition[i].cx, piecePosition[i].cy, piecePosition[i].wi, piecePosition[i].he);
 //        console.log("init p  x: " + piecePosition[i].opx + " y: " + piecePosition[i].opy + "\n" +
 //                "mouse   x: " + mouse.x + " y: " + mouse.y + "\n" +
 //                "final p x: " + (piecePosition[i].opx + piecePosition[i].wi) + " y: " + (piecePosition[i].opy + piecePosition[i].he));
-        try {
-            if (mouse.x > piecePosition[i].opx && mouse.x < (piecePosition[i].opx + piecePosition[i].wi) &&
-                    mouse.y > piecePosition[i].opy && mouse.y < (piecePosition[i].opy + piecePosition[i].he)) {
-                console.log(i + " pieces clicked !! " + piece.src);
-                return piece;
-            }
-        } catch (err) {
-
+    try {
+        if (mouse.x > piecePosition[i].opx && mouse.x < (piecePosition[i].opx + piecePosition[i].wi) &&
+                mouse.y > piecePosition[i].opy && mouse.y < (piecePosition[i].opy + piecePosition[i].he)) {
+            console.log(i + " pieces clicked !! " + piece.src);
+            return piece;
         }
+    } catch (err) {
+
+    }
     //}
-    pieces[0].style.zIndex = 50;
+
     return null;
 
 }
@@ -181,10 +178,10 @@ function checkPieceClicked() {
 function repaint() {
     moveTolast();
     //clear teh canvas
-   // console.log("propiedad new opx "+piecePosition[i].opx);
+    // console.log("propiedad new opx "+piecePosition[i].opx);
     stage.clearRect(0, 0, canvasWidth, canvasHeight);
     for (var i = 0; i < pieces.length; i++) {
-        
+
         stage.drawImage(pieces[i], piecePosition[i].opx, piecePosition[i].opy, piecePosition[i].wi, piecePosition[i].he);
     }
 }
@@ -198,23 +195,33 @@ function moveTolast() {
     newPosition[0] = pieces[pieces.length - 1];
     newPaths[0] = paths[pieces.length - 1];
     newpiecesPositions[0] = piecePosition[pieces.length - 1];
-    console.log("nuevas longitudas "+pieces.length +" "+pieces.length +" "+pieces.length );
-    console.log("propiedad new opx 0 "+piecePosition[0].opx);
+    console.log("nuevas longitudas " + pieces.length + " " + pieces.length + " " + pieces.length);
+    console.log("propiedad new opx 0 " + piecePosition[0].opx);
     for (var i = 0; i < pieces.length - 1; i++) {
         newPosition[i + 1] = pieces[i];
         newPaths[i + 1] = paths[i];
         newpiecesPositions[i + 1] = piecePosition[i];
-        console.log("propiedad opx for [i] ="+i+" move to "+piecePosition[i].opx);
+        console.log("propiedad opx for [i] =" + i + " move to " + piecePosition[i].opx);
     }
     pieces = newPosition;
     piecePosition = newpiecesPositions;
     paths = newPaths;
-    console.log("propiedad new opx "+piecePosition[0].opx);
-    console.log("nuevas longitudas "+pieces.length +" "+pieces.length +" "+pieces.length );
+    console.log("propiedad new opx " + piecePosition[0].opx);
+    console.log("nuevas longitudas " + pieces.length + " " + pieces.length + " " + pieces.length);
 }
 
 /*find wich piece was clicked*/
 
-function clickPiece(e) {
-
+function pieceMove(i) {
+    if (checkPieceClicked()!==null){
+        var nx, ny, ncx, ncy;
+        nx = mouse.x - piecePosition[i].cx;
+        ny = mouse.y - piecePosition[i].cy;
+        ncx = nx + (piecePosition[i].wi / 2);
+        ncy = ny + (piecePosition[i].wi / 2);
+        piecePosition[i].opx = nx;
+        piecePosition[i].opy = ny;
+        piecePosition[i].cx = ncx;
+        piecePosition[i].cy = ncy;
+    }
 }
