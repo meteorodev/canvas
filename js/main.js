@@ -3,7 +3,6 @@
 
 var canvas;
 var stage;
-
 var picture;
 var pieces = [];
 var canvasWidth;
@@ -14,7 +13,6 @@ var mouse;
 var piecePosition = [];
 var factor;
 var paths = [];
-
 /**function inicializadora */
 function init() {
     createPaths();
@@ -25,7 +23,6 @@ function init() {
     loadPieces(paths, function () {
         //console.log("size of pieces " + pieces.length);
         print();
-
     });
 }
 
@@ -47,11 +44,9 @@ function loadPieces(paths, whenLoaded) {
         };
         setTimeout(function () {
             imgT.src = path;
-
         }, 1);
     });
     //return pieces;
-
 }
 
 /*print pieces into the canvas*/
@@ -63,7 +58,6 @@ function print() {
         pry = Math.floor(Math.random() * (pieces[i].height / 2));
         wi = Math.floor(pieces[i].width * factor);
         he = Math.floor(pieces[i].height * factor);
-
         piecePosition[i] = {opx: prx, opy: pry, cx: (prx + (wi / 2)), cy: (pry + (he / 2)), wi: wi, he: he};
 //        console.log("imge added {" + wi + " : " + he + "} image in " + pieces[i].src + "\n" +
 //                "start position  {" + piecePosition[i].opx + " : " + piecePosition[i].opy + "}\n" +
@@ -72,9 +66,7 @@ function print() {
         //printCoor(i, prx, pry, piecePosition[i].cx, piecePosition[i].cy, wi, he);
         stage.drawImage(pieces[i], prx, pry, wi, he);
     }
-
     //console.log(piecePosition.length);
-    
 }
 
 
@@ -108,9 +100,7 @@ function printCoor(num, rx, ry, cx, cy, wi, he) {
     stage.lineTo(625, cy);
     stage.stroke();
 }
-
 /*end functions of development status*/
-
 
 function reziseImg(temImg) {
     if (temImg.height >= canvasHeight) {
@@ -154,15 +144,19 @@ function mousePosition(e) {
     return mouse;
 }
 
-function pintDrag() {
+function pintDrag(e) {
+    mouse.x = e.offsetX;
+    mouse.y = e.offsetY;
     if (dragable === 1) {
-        console.log("panted drag positions");
+        //console.log("painted drag positions");
+        console.log("mouse ["+mouse.x+":"+mouse.y+"]");
+        pieceMove();
     }
 }
 
 function checkPieceClicked() {
     var i = pieces.length - 1;
-    var piece;
+    var piece = null;
     //for (i = 0; i < pieces.length; i++) {
     piece = pieces[i];
     printCoor(0, piecePosition[i].opx, piecePosition[i].opy, piecePosition[i].cx, piecePosition[i].cy, piecePosition[i].wi, piecePosition[i].he);
@@ -176,24 +170,29 @@ function checkPieceClicked() {
             return piece;
         }
     } catch (err) {
-
     }
     //}
-
     return null;
-
 }
-
 
 /*function that repaint the pieces in a new position*/
 function repaint() {
     moveTolast();
-    //clear teh canvas
+    //clear the canvas
     // console.log("propiedad new opx "+piecePosition[i].opx);
     stage.clearRect(0, 0, canvasWidth, canvasHeight);
     for (var i = 0; i < pieces.length; i++) {
-
         stage.drawImage(pieces[i], piecePosition[i].opx, piecePosition[i].opy, piecePosition[i].wi, piecePosition[i].he);
+    }
+}
+
+/*function that repaint all mouse moves*/
+function paintMoves() {
+    stage.clearRect(0, 0, canvasWidth, canvasHeight);
+    for (var i = 0; i < pieces.length; i++) {
+        stage.drawImage(pieces[i], piecePosition[i].opx, piecePosition[i].opy, piecePosition[i].wi, piecePosition[i].he);
+        console.log(piecePosition[i].opx + " " + piecePosition[i].opy
+                + " " + piecePosition[i].wi + " " + piecePosition[i].he);
     }
 }
 
@@ -206,33 +205,33 @@ function moveTolast() {
     newPosition[0] = pieces[pieces.length - 1];
     newPaths[0] = paths[pieces.length - 1];
     newpiecesPositions[0] = piecePosition[pieces.length - 1];
-    console.log("nuevas longitudas " + pieces.length + " " + pieces.length + " " + pieces.length);
-    console.log("propiedad new opx 0 " + piecePosition[0].opx);
     for (var i = 0; i < pieces.length - 1; i++) {
         newPosition[i + 1] = pieces[i];
         newPaths[i + 1] = paths[i];
         newpiecesPositions[i + 1] = piecePosition[i];
-        console.log("propiedad opx for [i] =" + i + " move to " + piecePosition[i].opx);
     }
     pieces = newPosition;
     piecePosition = newpiecesPositions;
     paths = newPaths;
-    console.log("propiedad new opx " + piecePosition[0].opx);
-    console.log("nuevas longitudas " + pieces.length + " " + pieces.length + " " + pieces.length);
 }
 
 /*find wich piece was clicked*/
 
-function pieceMove(i) {
+function pieceMove() {
     if (checkPieceClicked() !== null) {
+        console.log("painted moves positions");
+        var i = pieces.length - 1;
         var nx, ny, ncx, ncy;
         nx = mouse.x - piecePosition[i].cx;
         ny = mouse.y - piecePosition[i].cy;
-        ncx = nx + (piecePosition[i].wi / 2);
-        ncy = ny + (piecePosition[i].wi / 2);
+        ncx = Math.floor(nx + (piecePosition[i].wi / 2));
+        ncy = Math.floor(ny + (piecePosition[i].wi / 2));
         piecePosition[i].opx = nx;
         piecePosition[i].opy = ny;
         piecePosition[i].cx = ncx;
         piecePosition[i].cy = ncy;
+        console.log("opx:opy [" + nx + ":" + ny + "]\n" +
+                "cy:cy   [" + ncx + ":" + ncy + "]");
+        paintMoves();
     }
 }
