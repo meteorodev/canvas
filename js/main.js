@@ -110,7 +110,7 @@ function reziseImg(temImg) {
 
 //initialice the canvas
 function getCanvan(dif) {
-    canvas = document.getElementById('lienso');
+    canvas = document.getElementById('canvaspic');
     stage = canvas.getContext('2d');
     canvas.width = canvasWidth;
     canvas.height = canvasHeight;
