@@ -14,9 +14,11 @@ var currentpiece;
 var piecePosition = [];
 var factor;
 var paths = [];
-var difx, dify;
+var difx, dify,nImages;
+
 /**function inicializadora */
 function init() {
+    getpath();
     createPaths();
     factor = 0.55;
     //init canvas wiht initioals dimentions  
@@ -28,10 +30,25 @@ function init() {
     });
 }
 
+//create div base on name of images
+function getpath(){
+    var parent= document.getElementById("art");
+    console.log(" de la imagen leida "+parent.alt);
+    nImages=parent.alt;
+    // get the parent of canvas 
+    parent = document.getElementById("canvasContainer");
+    //create new divs with the pieces of picture
+    for(i = 0;i < nImages;i++){
+        
+    }
+    
+}
+
 function createPaths() {
-    for (i = 0; i < 8; i++) {
+    for (i = 0; i < nImages; i++) {
         paths[i] = "img/pic1/" + (i + 1) + ".png";
     }
+    
 }
 
 function loadPieces(paths, whenLoaded) {
@@ -71,11 +88,11 @@ function print() {
 function loadImage() {
     picture = document.getElementById("art");
     picture.src = "img/pic1/pic1.jpg";
-    console.log("image's dimention {" + picture.width + " : " + picture.height + "}");
+    //console.log("image's dimention {" + picture.width + " : " + picture.height + "}");
     reziseImg(picture);
     picture.width = canvasWidth - 300;
     picture.height = canvasHeight - 300;
-    console.log("image's dimention change {" + picture.width + " : " + picture.height + "}");
+    //console.log("image's dimention change {" + picture.width + " : " + picture.height + "}");
     getCanvan();
 }
 
@@ -122,7 +139,7 @@ function getCanvan(dif) {
     canvas.onmousedown = mousePosition;
     canvas.onmousemove = pintDrag;
     canvas.addEventListener("mouseup", function () {
-        console.log("Drag disable");
+        //console.log("Drag disable");
         dragable = 0;
     }, false);
     canvas.ondblclick = repaint;

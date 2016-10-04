@@ -35,7 +35,7 @@ function getCanvas() {
     canvasP.width = width;
     canvasP.height = height;
     canvasP.style.border = "1px solid black";
-    
+
     canvasP.onmousedown = mousedown;
     canvasP.onmouseup = mouseup;
     canvasP.onmousemove = mousePosition;
@@ -68,16 +68,21 @@ function resizeImage(temImg) {
     }
 
 }
-function erasefont(){
-    stageP.clearRect(mouse.x,mouse.y,30,30);
+function erasefont() {
+    //stageP.clearRect(mouse.x, mouse.y, 30, 30);
+    //draw an arc (in this case, a circle)
+    stageP.globalCompositeOperation = 'destination-out';
+    stageP.arc(mouse.x, mouse.y, 16, 0, Math.PI*2);
+    stageP.closePath();
+    stageP.fill();
 }
 function mouseup() {
-    drag=false;
-    canvasP.style.cursor="default";
+    drag = false;
+    canvasP.style.cursor = "default";
 }
 function mousedown() {
-    drag=true;
-    canvasP.style.cursor="move";
+    drag = true;
+    canvasP.style.cursor = "move";
 }
 //get the mouse position 
 function mousePosition(e) {
@@ -86,7 +91,7 @@ function mousePosition(e) {
     mouse.y = e.offsetY;
     //console.log("enable drag");
     if (drag) {
-        console.log( mouse.x+" : " + mouse.y);
+        //console.log(mouse.x + " : " + mouse.y);
         erasefont();
     }
     return mouse;
