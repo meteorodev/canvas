@@ -7,7 +7,7 @@
  * Versión: 1.0
  * Descrip: Creacion
  * ____________________________________________________________________________
- * Copyright © 2016 INAMHI  inamhi.gob.ec All rights
+ * Copyright © 2016 INAMHI  DRVCORP.SA All rights
  * and open the template in the editor.
  */
 
