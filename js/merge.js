@@ -18,11 +18,11 @@ var difx, dify,nImages;
 
 /**function inicializadora */
 function init() {
-    getpath();
-    
+    canvasHeight = 600;
+    getpath();    
     factor = 0.55;
     //init canvas wiht initioals dimentions  
-    canvasHeight = 600;
+    
     loadImage();
     loadPieces(paths, function () {
         //console.log("size of pieces " + pieces.length);
@@ -40,7 +40,14 @@ function getpath(){
     parent = document.getElementById("canvasContainer");
     //create new divs with the pieces of picture
     for(i = 0;i < nImages;i++){
+        console.log("Creando elemento "+i);
         var div=document.createElement("div");
+        div.setAttribute("id", "piece"+1);
+        div.setAttribute("class", "pieceb");
+        div.style.display="inline-block";
+        var h1=document.createElement("h1");
+        h1.innerHTML = "Div "+i;
+        div.appendChild(h1);
         parent.appendChild(div);
         //load paths and insert the images in a new tag img then add the event to detect
         //wich img was clicked to change move it into the canvas.
