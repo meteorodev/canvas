@@ -19,7 +19,7 @@ var difx, dify,nImages;
 /**function inicializadora */
 function init() {
     getpath();
-    createPaths();
+    
     factor = 0.55;
     //init canvas wiht initioals dimentions  
     canvasHeight = 600;
@@ -36,10 +36,14 @@ function getpath(){
     console.log(" de la imagen leida "+parent.alt);
     nImages=parent.alt;
     // get the parent of canvas 
+    createPaths();
     parent = document.getElementById("canvasContainer");
     //create new divs with the pieces of picture
     for(i = 0;i < nImages;i++){
-        
+        var div=document.createElement("div");
+        parent.appendChild(div);
+        //load paths and insert the images in a new tag img then add the event to detect
+        //wich img was clicked to change move it into the canvas.
     }
     
 }
