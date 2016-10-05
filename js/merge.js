@@ -48,13 +48,14 @@ function getpath(){
     // get the parent of canvas 
     createPaths();
     parent = document.getElementById("canvasContainer");
+    
     //create new divs with the pieces of picture
     for(i = 0;i < nImages;i++){
         console.log("Creando elemento "+i);
         var div=document.createElement("div");
         div.setAttribute("id", "piece"+1);
+        //div.classList.add("pieceb");
         div.setAttribute("class", "pieceb");
-        div.style.display="inline-block";
         var h1=document.createElement("h1");
         h1.innerHTML = "Div "+i;
         div.appendChild(h1);

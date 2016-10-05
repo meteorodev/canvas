@@ -19,3 +19,6 @@ and open the template in the editor.
     background:url(img/show/most.png);
 }
 
+.pieceb{
+    display: inline-block;
+}
