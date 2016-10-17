@@ -46,7 +46,7 @@ function getpath(){
     nImages=parent.alt;
     // get the parent of canvas 
     createPaths();
-    parent = document.getElementById("canvasContainer");
+    parent = document.getElementById("canvasContainer1");
     
     //create new divs with the pieces of picture
     for(i = 0;i < nImages;i++){
@@ -56,8 +56,8 @@ function getpath(){
         var h1=document.createElement("h1");
         h1.innerHTML = "Div "+i;
         div.appendChild(h1);
-        div.style.borderWidth = "thin";
-        div.style.dispay="inline";
+        div.style.border = "thin solid";
+        div.style.display = "inline-block";
         
         parent.appendChild(div);
         //load paths and insert the images in a new tag img then add the event to detect
