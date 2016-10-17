@@ -28,7 +28,7 @@ function init() {
 }
 
 
-/*initialize the canvas picture an the canvas courtain*/
+/*initialize the canvas picture an the canvas*/
 function getCanvas() {
     mouse = {x: 0, y: 0};
     canvasP = document.getElementById("imageback");

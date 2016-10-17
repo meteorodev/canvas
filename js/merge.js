@@ -53,11 +53,12 @@ function getpath(){
         console.log("Creando elemento "+i);
         var div=document.createElement("div");
         div.setAttribute("id", "piece"+1);
-        //div.classList.add("pieceb");
-        div.setAttribute("class", "pieceb");
         var h1=document.createElement("h1");
         h1.innerHTML = "Div "+i;
         div.appendChild(h1);
+        div.style.borderWidth = "thin";
+        div.style.dispay="inline";
+        
         parent.appendChild(div);
         //load paths and insert the images in a new tag img then add the event to detect
         //wich img was clicked to change move it into the canvas.
