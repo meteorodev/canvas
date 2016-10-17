@@ -1,0 +1,24 @@
+
+/*
+DESCRIPCIÓN
+
+____________________________________________________________________________
+Autor:   Darwin Rosero Vaca <darwin11rv@gmail.com>
+Fecha:   04/10/2016
+Versión: 1.0
+Descrip: Creacion
+____________________________________________________________________________
+Copyright © 2016 DRVCORP.SA All rights
+and open the template in the editor.
+*/
+
+
+#imageback {
+    background:url(img/show/most.png);
+}
+
+.pieceb{
+    display: inline-block;
+}
+
+
