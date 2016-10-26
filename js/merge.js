@@ -10,6 +10,8 @@
  * Copyright © 2016 DRVCORP.sa All rights
  * and open the template in the editor.
  */
+/* global pices */
+
 var canvas;
 var stage;
 var picture;
@@ -22,33 +24,45 @@ var currentpiece;
 //contains the position for each piece star position and end position 
 var piecePosition = [];
 var factor;
-var difx, dify,nImages;
+var difx, dify, nImages;
 
 /**function inicializadora */
 function init() {
-    var can= document.getElementById("canvaspic");
-    canvasHeight=can.height;
-    canvasWidth=can.width; 
+    var can = document.getElementById("canvaspic");
+    canvasHeight = can.height;
+    canvasWidth = can.width;
     factor = 0.55;
     //init canvas wiht initioals dimentions  
-    loadImage();
+    getCanvan();
     loadPieces();
-    console.log("imagenes en lieces "+pieces.length);
-    for(i=0;i<pieces.length;i++){
-        console.log(" pieces contiene "+pieces[i].getAttribute("id"));
-    }
+
 }
 
 
 function loadPieces() {
-    var np= document.getElementById("canvasContainer1").getElementsByTagName("div").length;
-    console.log("numero de divs encontrados "+np);
-    for(i=1;i<= np;i++ ){
-        console.log(" imagen leida  "+i);
-        pieces.push(document.getElementById("piece"+i));
+    var np = document.getElementById("canvasContainer1").getElementsByTagName("img").length;
+    console.log("find img " + np);
+
+    for (i = 1; i <= np; i++) {
+        var imgT = new Image();
+        var imgT = document.getElementById("piece" + i);
+        imgT.width = imgT.naturalWidth;
+        imgT.height = imgT.naturalHeight;
+        pieces.push(imgT);
+        //var imgT = new Image
     }
     print();
+    //rezise the image selector
+    for (i = 1; i <= np; i++) {
+        //<img id="piece5"  src="img/pic1/5.png" alt=""/>
+        var imgT = document.getElementById("piece" + i);
+        //imgT.onclick = selectedImage;
+        imgT.width = 73;
+        imgT.height = 78;
+    }
 }
+
+
 
 /*print pieces into the canvas*/
 function print() {
@@ -65,12 +79,6 @@ function print() {
     currentpiece = pieces.length - 1;
 }
 
-
-/*load the main imagen and change the width and height */
-function loadImage() {
-    //console.log("image's dimention change {" + picture.width + " : " + picture.height + "}");
-    getCanvan();
-}
 
 /*just by development status*/
 function printCoor(num, rx, ry, cx, cy, wi, he) {
@@ -111,6 +119,22 @@ function getCanvan(dif) {
     canvas.ondblclick = repaint;
 }
 
+function selectedImage(e) {
+    var pieceTem = [];
+    var piceTEm;
+    for (i = 0; i < pieces.length; i++) {
+        if(e.id===pieces[i].id){
+            piceTEm= pieces[i];
+        }else{
+            pieceTem.push(pieces[i]);
+        }
+        
+    }
+    pieceTem.push(piceTEm);
+    pieces=pieceTem;    
+    repaint();
+}
+
 //get the mouse position base on canvas
 function mousePosition(e) {
     dragable = 1;
@@ -134,15 +158,15 @@ function pintDrag(e) {
     }
 }
 
-function checkPieceClicked() {    
+function checkPieceClicked() {
     //for (i = 0; i < pieces.length; i++) {
     piece = pieces[currentpiece];
     printCoor(0, piecePosition[currentpiece].opx, piecePosition[currentpiece].opy, piecePosition[currentpiece].cx,
-    piecePosition[currentpiece].cy, piecePosition[currentpiece].wi, piecePosition[currentpiece].he);
+            piecePosition[currentpiece].cy, piecePosition[currentpiece].wi, piecePosition[currentpiece].he);
     try {
         if (mouse.x > piecePosition[currentpiece].opx && mouse.x < (piecePosition[currentpiece].opx + piecePosition[currentpiece].wi) &&
                 mouse.y > piecePosition[currentpiece].opy && mouse.y < (piecePosition[currentpiece].opy + piecePosition[currentpiece].he)) {
-            console.log(i + " pieces clicked !! " + piece.src);            
+            console.log(i + " pieces clicked !! " + piece.src);
             difx = mouse.x - piecePosition[currentpiece].opx;
             dify = mouse.y - piecePosition[currentpiece].opy;
             return true;
@@ -154,34 +178,12 @@ function checkPieceClicked() {
 }
 
 /*function that repaint the pieces in a new position*/
-function repaint() {
-    moveTolast();
+function repaint() {    
     stage.clearRect(0, 0, canvasWidth, canvasHeight);
     for (var i = 0; i < pieces.length; i++) {
         stage.drawImage(pieces[i], piecePosition[i].opx, piecePosition[i].opy, piecePosition[i].wi, piecePosition[i].he);
     }
 }
-
-/*Function that reorder the position that the images is painted*/
-
-function moveTolast() {
-    var newPosition = [];
-    var newPaths = [];
-    var newpiecesPositions = [];
-    newPosition[0] = pieces[currentpiece];
-    newPaths[0] = paths[currentpiece];
-    newpiecesPositions[0] = piecePosition[currentpiece];
-    for (var i = 0; i < currentpiece; i++) {
-        newPosition[i + 1] = pieces[i];
-        newPaths[i + 1] = paths[i];
-        newpiecesPositions[i + 1] = piecePosition[i];
-    }
-    pieces = newPosition;
-    piecePosition = newpiecesPositions;
-    paths = newPaths;
-}
-
-/*find wich piece was clicked*/
 
 function pieceMove() {
     console.log("painted moves positions");
@@ -190,8 +192,8 @@ function pieceMove() {
     //console.log("opx:opy [" + nx + ":" + ny + "]\n" + "cy:cy   [" + ncx + ":" + ncy + "]");
     stage.clearRect(0, 0, canvasWidth, canvasHeight);
     printCoor(0, piecePosition[currentpiece].opx, piecePosition[currentpiece].opy, piecePosition[currentpiece].cx,
-    piecePosition[currentpiece].cy, piecePosition[currentpiece].wi, piecePosition[currentpiece].he);
-    for (var i = 0; i < pieces.length; i++) {        
+            piecePosition[currentpiece].cy, piecePosition[currentpiece].wi, piecePosition[currentpiece].he);
+    for (var i = 0; i < pieces.length; i++) {
         stage.drawImage(pieces[i], piecePosition[i].opx, piecePosition[i].opy, piecePosition[i].wi, piecePosition[i].he);
         //console.log("new coords "+piecePosition[i].opx + " " + piecePosition[i].opy
         //      + " " + piecePosition[i].wi + " " + piecePosition[i].he);
