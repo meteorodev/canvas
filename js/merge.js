@@ -22,77 +22,32 @@ var currentpiece;
 //contains the position for each piece star position and end position 
 var piecePosition = [];
 var factor;
-var paths = [];
 var difx, dify,nImages;
 
 /**function inicializadora */
 function init() {
-    canvasHeight = 600;
-    getpath();    
+    var can= document.getElementById("canvaspic");
+    canvasHeight=can.height;
+    canvasWidth=can.width; 
     factor = 0.55;
     //init canvas wiht initioals dimentions  
-    
     loadImage();
-    loadPieces(paths, function () {
-        //console.log("size of pieces " + pieces.length);
-        print();
-    });
-}
-
-//create div base on name of images
-function getpath(){
-    var parent= document.getElementById("art");
-    console.log(" de la imagen leida "+parent.alt);
-    nImages=parent.alt;
-    // get the parent of canvas 
-    createPaths();
-    parent = document.getElementById("canvasContainer1");
-    
-    //create new divs with the pieces of picture
-    for(i = 0;i < nImages;i++){
-        console.log("Creando elemento "+i);
-        var div=document.createElement("div");
-        div.setAttribute("id", "piece"+1);
-        var h1=document.createElement("h1");
-        h1.innerHTML = "Div "+i;
-        div.appendChild(h1);
-        div.style.border = "thin solid";
-        div.style.display = "inline-block";
-        
-        parent.appendChild(div);
-        //load paths and insert the images in a new tag img then add the event to detect
-        //wich img was clicked to change move it into the canvas.
+    loadPieces();
+    console.log("imagenes en lieces "+pieces.length);
+    for(i=0;i<pieces.length;i++){
+        console.log(" pieces contiene "+pieces[i].getAttribute("id"));
     }
-    
 }
 
-function createPaths() {
-    for (i = 0; i < nImages; i++) {
-        paths[i] = "img/pic1/" + (i + 1) + ".png";
+
+function loadPieces() {
+    var np= document.getElementById("canvasContainer1").getElementsByTagName("div").length;
+    console.log("numero de divs encontrados "+np);
+    for(i=1;i<= np;i++ ){
+        console.log(" imagen leida  "+i);
+        pieces.push(document.getElementById("piece"+i));
     }
-    
-}
-
-/*Create div to content the pieces of image it's will be load first*/
-function createDiv(){
-    
-}
-
-function loadPieces(paths, whenLoaded) {
-    /*create imges pieces from picture*/
-    paths.forEach(function (path) {
-        var imgT = new Image();
-        imgT.onload = function () {
-            pieces.push(imgT);
-            if (pieces.length === paths.length) {
-                whenLoaded(pieces);
-            }
-        };
-        setTimeout(function () {
-            imgT.src = path;
-        }, 1);
-    });
-    //return pieces;
+    print();
 }
 
 /*print pieces into the canvas*/
@@ -113,12 +68,6 @@ function print() {
 
 /*load the main imagen and change the width and height */
 function loadImage() {
-    picture = document.getElementById("art");
-    picture.src = "img/pic1/pic1.jpg";
-    //console.log("image's dimention {" + picture.width + " : " + picture.height + "}");
-    reziseImg(picture);
-    picture.width = canvasWidth - 300;
-    picture.height = canvasHeight - 300;
     //console.log("image's dimention change {" + picture.width + " : " + picture.height + "}");
     getCanvan();
 }
@@ -140,16 +89,6 @@ function printCoor(num, rx, ry, cx, cy, wi, he) {
     //stage.moveTo(0, cy);
     //stage.lineTo(625, cy);
     //stage.stroke();
-}
-/*end functions of development status*/
-
-function reziseImg(temImg) {
-    if (temImg.height >= canvasHeight) {
-        var dif = temImg.height - canvasHeight;
-        canvasHeight = temImg.height - dif;
-        canvasWidth = temImg.width - dif;
-        console.log("canvan's dimention {" + canvasWidth + " : " + canvasHeight + "}");
-    }
 }
 
 //initialice the canvas
@@ -222,8 +161,6 @@ function repaint() {
         stage.drawImage(pieces[i], piecePosition[i].opx, piecePosition[i].opy, piecePosition[i].wi, piecePosition[i].he);
     }
 }
-
-
 
 /*Function that reorder the position that the images is painted*/
 
