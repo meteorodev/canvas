@@ -15,16 +15,18 @@
 var canvas;
 var stage;
 var picture;
-var pieces = [];
 var canvasWidth;
 var canvasHeight;
 var dragable = 0;
 var mouse;
 var currentpiece;
 //contains the position for each piece star position and end position 
+var pieces = [];
 var piecePosition = [];
+var piecedimentions = [];
+
 var factor;
-var difx, dify, nImages;
+var difx, dify;
 
 /**function inicializadora */
 function init() {
@@ -42,7 +44,7 @@ function init() {
 function loadPieces() {
     var np = document.getElementById("canvasContainer1").getElementsByTagName("img").length;
     console.log("find img " + np);
-
+    
     for (i = 1; i <= np; i++) {
         var imgT = new Image();
         var imgT = document.getElementById("piece" + i);
@@ -121,16 +123,21 @@ function getCanvan(dif) {
 
 function selectedImage(e) {
     var pieceTem = [];
+    var piecePosiTem = [];
+    var ppt;
     var piceTEm;
     for (i = 0; i < pieces.length; i++) {
         if(e.id===pieces[i].id){
             piceTEm= pieces[i];
+            ppt=piecePosition[i];
         }else{
             pieceTem.push(pieces[i]);
-        }
-        
+            piecePosiTem.push(piecePosition[i]);
+        }        
     }
     pieceTem.push(piceTEm);
+    piecePosiTem.push(ppt);
+    piecePosition=piecePosiTem;
     pieces=pieceTem;    
     repaint();
 }
