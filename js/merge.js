@@ -40,7 +40,6 @@ function init() {
 
 }
 
-
 function loadPieces() {
     var np = document.getElementById("canvasContainer1").getElementsByTagName("img").length;
     console.log("find img " + np);

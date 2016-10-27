@@ -17,8 +17,46 @@ and open the template in the editor.
     background:url(img/show/most.png);
 }
 
+.canvasC{
+    border: thin solid; 
+    display: inline-block;
+}
+.artC{
+    position: fixed;
+    display: inline-block;
+}
+#art{
+    border: thin solid;
+    margin-bottom: 10px;
+}
+
+.min{
+    border: thin solid;
+    display: inline-block;
+}
+
 .pieceb{
     display: inline-block;
 }
 
+.btn {
+    background-color: #33cc33;
+    display: inline-block;
+    
+}
 
+.btn {
+    color: white;
+    text-decoration: none;
+    content:'';
+    width: 163px;
+    height: 25px;
+    /*background: rgba(255,255,255,0.3);*/
+    border-radius: 10px;
+    transition: all 1s ease;
+    text-align: center;
+}
+.btn:hover {
+    background-color: #29a329;
+    /*font-size: 28px;*/
+}
