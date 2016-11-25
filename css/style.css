@@ -39,24 +39,9 @@ and open the template in the editor.
     display: inline-block;
 }
 
-.btn {
-    background-color: #33cc33;
-    display: inline-block;
-    
+.btn{
+    width: 9em;
 }
-
-.btn {
-    color: white;
-    text-decoration: none;
-    content:'';
-    width: 163px;
-    height: 25px;
-    /*background: rgba(255,255,255,0.3);*/
-    border-radius: 10px;
-    transition: all 1s ease;
-    text-align: center;
-}
-.btn:hover {
-    background-color: #29a329;
-    /*font-size: 28px;*/
+.btn:hover{
+    width:  10em;
 }

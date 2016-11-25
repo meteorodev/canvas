@@ -146,8 +146,8 @@ function mousePosition(e) {
     dragable = 1;
     mouse.x = e.offsetX;
     mouse.y = e.offsetY;
-    //console.log("e.layer by x: " + e.layerX + " : " + canvas.offsetLeft + " : " + e.offsetX);
-    //console.log("e.layer by x: " + e.layerY + " : " + canvas.offsetTop + " : " + e.offsetY);
+    console.log("e.layer by x: " + e.layerX + " : " + canvas.offsetLeft + " : " + e.offsetX);
+    console.log("e.layer by x: " + e.layerY + " : " + canvas.offsetTop + " : " + e.offsetY);
     checkPieceClicked();
     console.log("enable drag");
     //stage.drawImage(img2, mouse.x, mouse.y, 80, 236);
