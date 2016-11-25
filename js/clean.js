@@ -42,7 +42,7 @@ function getCanvas() {
     canvasP.onmousemove = mousePosition;
     /*create a image that will be erase*/
     var fontimage = new Image();
-    fontimage.src = "img/show/font.jpg";
+    fontimage.src = "img/show/font.png";
     fontimage.onload = function () {
         stageP.drawImage(fontimage, 0, 0, width, height);
 
