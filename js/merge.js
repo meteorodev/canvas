@@ -22,6 +22,7 @@ var mouse;
 var currentpiece;
 //contains the position for each piece star position and end position 
 var pieces = [];
+var piecesPaint = [];// pieces to be add
 var piecePosition = [];
 var piecedimentions = [];
 
@@ -43,15 +44,17 @@ function init() {
 function loadPieces() {
     var np = document.getElementById("canvasContainer1").getElementsByTagName("img").length;
     console.log("find img " + np);
-    
+
     for (i = 1; i <= np; i++) {
         var imgT = new Image();
         var imgT = document.getElementById("piece" + i);
         imgT.width = imgT.naturalWidth;
         imgT.height = imgT.naturalHeight;
         pieces.push(imgT);
+        piecesPaint.push(0);
         //var imgT = new Image
     }
+    piecesPaint[3] = 1;
     print();
     //rezise the image selector
     for (i = 1; i <= np; i++) {
@@ -75,7 +78,9 @@ function print() {
         wi = Math.floor(pieces[i].width * factor);
         he = Math.floor(pieces[i].height * factor);
         piecePosition[i] = {opx: prx, opy: pry, cx: (prx + (wi / 2)), cy: (pry + (he / 2)), wi: wi, he: he};
-        stage.drawImage(pieces[i], prx, pry, wi, he);
+        if (piecesPaint[i] === 1) {
+            stage.drawImage(pieces[i], prx, pry, wi, he);
+        }
     }
     currentpiece = pieces.length - 1;
 }
@@ -126,18 +131,18 @@ function selectedImage(e) {
     var ppt;
     var piceTEm;
     for (i = 0; i < pieces.length; i++) {
-        if(e.id===pieces[i].id){
-            piceTEm= pieces[i];
-            ppt=piecePosition[i];
-        }else{
+        if (e.id === pieces[i].id) {
+            piceTEm = pieces[i];
+            ppt = piecePosition[i];
+        } else {
             pieceTem.push(pieces[i]);
             piecePosiTem.push(piecePosition[i]);
-        }        
+        }
     }
     pieceTem.push(piceTEm);
     piecePosiTem.push(ppt);
-    piecePosition=piecePosiTem;
-    pieces=pieceTem;    
+    piecePosition = piecePosiTem;
+    pieces = pieceTem;
     repaint();
 }
 
@@ -146,8 +151,8 @@ function mousePosition(e) {
     dragable = 1;
     mouse.x = e.offsetX;
     mouse.y = e.offsetY;
-    console.log("e.layer by x: " + e.layerX + " : " + canvas.offsetLeft + " : " + e.offsetX);
-    console.log("e.layer by x: " + e.layerY + " : " + canvas.offsetTop + " : " + e.offsetY);
+    //console.log("e.layer by x: " + e.layerX + " : " + canvas.offsetLeft + " : " + e.offsetX);
+    //console.log("e.layer by x: " + e.layerY + " : " + canvas.offsetTop + " : " + e.offsetY);
     checkPieceClicked();
     console.log("enable drag");
     //stage.drawImage(img2, mouse.x, mouse.y, 80, 236);
@@ -184,7 +189,7 @@ function checkPieceClicked() {
 }
 
 /*function that repaint the pieces in a new position*/
-function repaint() {    
+function repaint() {
     stage.clearRect(0, 0, canvasWidth, canvasHeight);
     for (var i = 0; i < pieces.length; i++) {
         stage.drawImage(pieces[i], piecePosition[i].opx, piecePosition[i].opy, piecePosition[i].wi, piecePosition[i].he);
