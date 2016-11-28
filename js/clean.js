@@ -73,7 +73,7 @@ function erasefont() {
     //stageP.clearRect(mouse.x, mouse.y, 30, 30);
     //draw an arc (in this case, a circle)
     stageP.globalCompositeOperation = 'destination-out';
-    stageP.arc(mouse.x, mouse.y, 16, 0, Math.PI*2);
+    stageP.arc(mouse.x, mouse.y, 24, 0, Math.PI*2);
     stageP.closePath();
     stageP.fill();
 }

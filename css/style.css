@@ -40,8 +40,10 @@ and open the template in the editor.
 }
 
 .btn{
-    width: 9em;
+    width: 10em;
+    opacity: 0.5;
 }
 .btn:hover{
     width:  10em;
+    opacity: 1;
 }

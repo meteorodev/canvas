@@ -34,7 +34,7 @@ function init() {
     var can = document.getElementById("canvaspic");
     canvasHeight = can.height;
     canvasWidth = can.width;
-    factor = 0.32;
+    factor = 0.35;
     //init canvas wiht initioals dimentions  
     getCanvan();
     loadPieces();
@@ -44,12 +44,12 @@ function init() {
 function loadPieces() {
     var np = document.getElementById("canvasContainer1").getElementsByTagName("img").length;
     console.log("find img " + np);
-
     for (i = 1; i <= np; i++) {
         var imgT = new Image();
-        var imgT = document.getElementById("piece" + i);
+        //var imgT = document.getElementById("piece" + i);
         imgT.width = imgT.naturalWidth;
         imgT.height = imgT.naturalHeight;
+        console.log("real xy "+imgT.width+"  "+imgT.height);
         pieces.push(imgT);
         piecesPaint.push(0);
         //var imgT = new Image
