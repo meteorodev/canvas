@@ -34,7 +34,11 @@ function init() {
     var can = document.getElementById("canvaspic");
     canvasHeight = can.height;
     canvasWidth = can.width;
-    factor = 0.32;
+    var osp=document.getElementById("art");
+    console.log("natural w/h "+osp.naturalWidth+" / "+osp.naturalHeight);
+    //factor = 0.32;
+    factor = osp.naturalHeight/600;
+    console.log("factor  "+factor);
     //init canvas wiht initioals dimentions  
     getCanvan();
     loadPieces();
@@ -72,10 +76,14 @@ function print() {
     //compute the ceter of each image
     var prx, pry, wi, he;
     for (i = 0; i < pieces.length; i++) {
+        
         prx = Math.floor(Math.random() * (pieces[i].width / 2));
         pry = Math.floor(Math.random() * (pieces[i].height / 2));
-        wi = Math.floor(pieces[i].width * factor);
-        he = Math.floor(pieces[i].height * factor);
+        wi = Math.floor(pieces[i].width / factor);
+        he = Math.floor(pieces[i].height / factor);
+        console.log("actual "+pieces[i].width+" / "+pieces[i].height 
+                +" natural "+pieces[i].naturalWidth +" / "+pieces[i].naturalHeight+
+                " wi/he*factor  "+wi+"/"+he+" factor "+factor);
         piecePosition[i] = {opx: prx, opy: pry, cx: (prx + (wi / 2)), cy: (pry + (he / 2)), wi: wi, he: he};
         if (piecesPaint[i] === 1) {
             stage.drawImage(pieces[i], prx, pry, wi, he);
@@ -136,7 +144,7 @@ function selectedImage(e) {
             piceTEm = pieces[i];
             ppt = piecePosition[i];
             //ptp = 1;
-            console.log(i +" "+e.id+"  "+ pieces[i].id );
+            //console.log(i +" "+e.id+"  "+ pieces[i].id );
         } else {
             pieceTem.push(pieces[i]);
             piecePosiTem.push(piecePosition[i]);
@@ -183,7 +191,7 @@ function checkPieceClicked() {
     try {
         if (mouse.x > piecePosition[currentpiece].opx && mouse.x < (piecePosition[currentpiece].opx + piecePosition[currentpiece].wi) &&
                 mouse.y > piecePosition[currentpiece].opy && mouse.y < (piecePosition[currentpiece].opy + piecePosition[currentpiece].he)) {
-            console.log(i + " pieces clicked !! " + piece.src);
+            //console.log(i + " pieces clicked !! " + piece.src);
             difx = mouse.x - piecePosition[currentpiece].opx;
             dify = mouse.y - piecePosition[currentpiece].opy;
             return true;
