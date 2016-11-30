@@ -51,7 +51,7 @@ function getCanvas() {
     my_gradient.addColorStop(1, "black");
     my_gradient.addColorStop(0, "white");
     //stageP.fillStyle = my_gradient;
-    stageP.fillStyle ='rgba(255, 0, 0, 0.5)';
+    stageP.fillStyle ='rgba(0, 0, 0, 0.97)';
     /*stageP.fillStyle = "#3c3c3c";*/
     stageP.fillRect(0, 0, width, height);
     console.log("creating canvas");
