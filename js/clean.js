@@ -8,7 +8,7 @@
  * Descrip: Creacion
  * ____________________________________________________________________________
  * Copyright © 2016 DRVCORP.sa All rights
-
+ 
  * and open the template in the editor.
  */
 
@@ -40,13 +40,20 @@ function getCanvas() {
     canvasP.onmousedown = mousedown;
     canvasP.onmouseup = mouseup;
     canvasP.onmousemove = mousePosition;
-    /*create a image that will be erase*/
-    var fontimage = new Image();
-    fontimage.src = "img/show/font.png";
-    fontimage.onload = function () {
-        stageP.drawImage(fontimage, 0, 0, width, height);
-
-    };
+    /*create a image that will be erase
+     var fontimage = new Image();
+     fontimage.src = "img/show/font.png";
+     fontimage.onload = function () {
+     stageP.drawImage(fontimage, 0, 0, width, height);
+     
+     };*/
+    var my_gradient = stageP.createLinearGradient(0, 0, 0, 170);
+    my_gradient.addColorStop(1, "black");
+    my_gradient.addColorStop(0, "white");
+    //stageP.fillStyle = my_gradient;
+    stageP.fillStyle ='rgba(255, 0, 0, 0.5)';
+    /*stageP.fillStyle = "#3c3c3c";*/
+    stageP.fillRect(0, 0, width, height);
     console.log("creating canvas");
 
 }
@@ -73,7 +80,7 @@ function erasefont() {
     //stageP.clearRect(mouse.x, mouse.y, 30, 30);
     //draw an arc (in this case, a circle)
     stageP.globalCompositeOperation = 'destination-out';
-    stageP.arc(mouse.x, mouse.y, 16, 0, Math.PI*2);
+    stageP.arc(mouse.x, mouse.y, 24, 0, Math.PI * 2);
     stageP.closePath();
     stageP.fill();
 }

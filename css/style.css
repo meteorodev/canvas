@@ -16,6 +16,9 @@ and open the template in the editor.
 #imageback {
     background:url(../img/show/most.png);
 }
+body{
+    background: #050505;
+}
 
 .canvasC{
     border: thin solid; 
