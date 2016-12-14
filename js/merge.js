@@ -34,11 +34,11 @@ function init() {
     var can = document.getElementById("canvaspic");
     canvasHeight = can.height;
     canvasWidth = can.width;
-    var osp=document.getElementById("art");
-    console.log("natural w/h "+osp.naturalWidth+" / "+osp.naturalHeight);
+    var osp = document.getElementById("art");
+    console.log("natural w/h " + osp.naturalWidth + " / " + osp.naturalHeight);
     //factor = 0.32;
-    factor = osp.naturalHeight/600;
-    console.log("factor  "+factor);
+    factor = osp.naturalHeight / 600;
+    console.log("factor  " + factor);
     //init canvas wiht initioals dimentions  
     getCanvan();
     loadPieces();
@@ -76,15 +76,15 @@ function print() {
     //compute the ceter of each image
     var prx, pry, wi, he;
     for (i = 0; i < pieces.length; i++) {
-        
+
         prx = Math.floor(Math.random() * (625 / 2));
         pry = Math.floor(Math.random() * (600 / 2));
         wi = Math.floor(pieces[i].width / factor);
         he = Math.floor(pieces[i].height / factor);
-        console.log("actual "+pieces[i].width+" / "+pieces[i].height 
-                +" natural "+pieces[i].naturalWidth +" / "+pieces[i].naturalHeight+
-                " wi/he*factor  "+wi+"/"+he+" factor "+factor);
-        piecePosition[i] = {opx: prx, opy: pry, cx: (prx + (wi / 2)), cy: (pry + (he / 2)), wi: wi, he: he};
+//        console.log("current "+pieces[i].width+" / "+pieces[i].height 
+//                +" natural "+pieces[i].naturalWidth +" / "+pieces[i].naturalHeight+
+//                " wi/he*factor  "+wi+"/"+he+" factor "+factor);
+        piecePosition[i] = {opx: prx, opy: pry, cx: (prx + (wi / 2)), cy: (pry + (he / 2)), wi: wi, he: he, rad: 0.0};
         if (piecesPaint[i] === 1) {
             stage.drawImage(pieces[i], prx, pry, wi, he);
         }
@@ -125,6 +125,7 @@ function getCanvan() {
     //document.onmousemove =overCanvas;
     canvas.onmousedown = mousePosition;
     canvas.onmousemove = pintDrag;
+    canvas.onmousewheel = rotate;
     canvas.addEventListener("mouseup", function () {
         //console.log("Drag disable");
         dragable = 0;
@@ -156,7 +157,7 @@ function selectedImage(e) {
     piecePosiTem.push(ppt);
     piecePosition = piecePosiTem;
     pieces = pieceTem;
-    piecesPaint=piecePiTem;
+    piecesPaint = piecePiTem;
     repaint();
 }
 
@@ -168,7 +169,7 @@ function mousePosition(e) {
     //console.log("e.layer by x: " + e.layerX + " : " + canvas.offsetLeft + " : " + e.offsetX);
     //console.log("e.layer by x: " + e.layerY + " : " + canvas.offsetTop + " : " + e.offsetY);
     checkPieceClicked();
-    console.log("enable drag");
+    //console.log("enable drag");
     //stage.drawImage(img2, mouse.x, mouse.y, 80, 236);
     return mouse;
 }
@@ -227,8 +228,14 @@ function pieceMove() {
         }
     }
 }
-function rotate(event){
+function rotate(event) {
+    var currentRad = piecePosition[currentpiece].rad;
     
-    var rd = (10*3.14159)/180;
-    console.log("obteniendo la posicione del scroll "+event.wheelDelta+" -- "+pieces[currentpiece].src+" -- rad "+rd);
+    if (event.wheelDelta > 0) {
+        piecePosition[currentpiece].rad = currentRad + 0.0872665;
+    } 
+    if (event.wheelDelta < 0) {
+        piecePosition[currentpiece].rad = currentRad - 0.0872665;
+    }
+    console.log("obteniendo la posicione del scroll " + event.wheelDelta + " -- " + pieces[currentpiece].src + " -- rad " + currentRad);
 }
