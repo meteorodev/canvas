@@ -35,6 +35,7 @@ function getCanvas() {
     stageP = canvasP.getContext('2d');
     canvasP.width = width;
     canvasP.height = height;
+    stageP.clearRect(0, 0, canvasP.width, canvasP.height);
     canvasP.style.border = "1px solid black";
 
     canvasP.onmousedown = mousedown;
@@ -59,12 +60,12 @@ function getCanvas() {
 }
 function loadImage() {
     var picture = new Image();
-    picture.src = "img/show/most.png";
+    picture = document.getElementById("picfont");
     // Make sure the image is loaded first otherwise nothing will draw.
-    picture.onload = function () {
+    //picture.onload = function () {
         resizeImage(picture);
         getCanvas();
-    };
+    //};
 
 }
 function resizeImage(temImg) {

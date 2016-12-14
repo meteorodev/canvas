@@ -77,8 +77,8 @@ function print() {
     var prx, pry, wi, he;
     for (i = 0; i < pieces.length; i++) {
         
-        prx = Math.floor(Math.random() * (pieces[i].width / 2));
-        pry = Math.floor(Math.random() * (pieces[i].height / 2));
+        prx = Math.floor(Math.random() * (625 / 2));
+        pry = Math.floor(Math.random() * (600 / 2));
         wi = Math.floor(pieces[i].width / factor);
         he = Math.floor(pieces[i].height / factor);
         console.log("actual "+pieces[i].width+" / "+pieces[i].height 
@@ -226,4 +226,9 @@ function pieceMove() {
             stage.drawImage(pieces[i], piecePosition[i].opx, piecePosition[i].opy, piecePosition[i].wi, piecePosition[i].he);
         }
     }
+}
+function rotate(event){
+    
+    var rd = (10*3.14159)/180;
+    console.log("obteniendo la posicione del scroll "+event.wheelDelta+" -- "+pieces[currentpiece].src+" -- rad "+rd);
 }
