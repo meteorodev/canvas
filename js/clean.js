@@ -41,19 +41,10 @@ function getCanvas() {
     canvasP.onmousedown = mousedown;
     canvasP.onmouseup = mouseup;
     canvasP.onmousemove = mousePosition;
-    /*create a image that will be erase
-     var fontimage = new Image();
-     fontimage.src = "img/show/font.png";
-     fontimage.onload = function () {
-     stageP.drawImage(fontimage, 0, 0, width, height);
-     
-     };*/
     var my_gradient = stageP.createLinearGradient(0, 0, 10, height*2);
     my_gradient.addColorStop(0, "black");
     my_gradient.addColorStop(1, "#3c3c3c");
     stageP.fillStyle = my_gradient;
-    //stageP.fillStyle ='rgba(0, 0, 0, 0.90)';
-    //stageP.fillStyle = "#3c3c3c";
     stageP.fillRect(0, 0, width, height);
     console.log("creating canvas");
 
