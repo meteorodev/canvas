@@ -237,5 +237,9 @@ function rotate(event) {
     if (event.wheelDelta < 0) {
         piecePosition[currentpiece].rad = currentRad - 0.0872665;
     }
+    //stage.save();
+    stage.rotate(piecePosition[currentpiece].rad);
+    //stage.restore();
+    repaint();
     console.log("obteniendo la posicione del scroll " + event.wheelDelta + " -- " + pieces[currentpiece].src + " -- rad " + currentRad);
 }
