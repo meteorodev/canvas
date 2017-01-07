@@ -22,8 +22,8 @@ var drag = false;
 
 function init() {
     //initialeze height size for computing width base on it
-    height = 600;
-    width = 400;
+    height = 459;
+    width = 817;
     loadImage();
 }
 
