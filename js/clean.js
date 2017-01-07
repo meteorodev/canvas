@@ -54,7 +54,7 @@ function loadImage() {
     picture = document.getElementById("picfont");
     // Make sure the image is loaded first otherwise nothing will draw.
     //picture.onload = function () {
-        resizeImage(picture);
+        //resizeImage(picture);
         getCanvas();
     //};
 
