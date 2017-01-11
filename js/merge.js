@@ -142,14 +142,16 @@ function selectedImage(e) {
     //var ptp;
     for (i = 0; i < pieces.length; i++) {
         if (e.id === pieces[i].id) {
+            //console.log("Aqui tambien podria cambiar la opacidad de la imagen ??? "+e.id);
+            e.style.opacity = "0.5";
+            e.style.border="3px solid white";
             piceTEm = pieces[i];
             ppt = piecePosition[i];
-            //ptp = 1;
-            //console.log(i +" "+e.id+"  "+ pieces[i].id );
         } else {
             pieceTem.push(pieces[i]);
             piecePosiTem.push(piecePosition[i]);
             piecePiTem.push(piecesPaint[i]);
+            pieces[i].style.border="0px";
         }
     }
     piecePiTem.push(1);
@@ -209,7 +211,8 @@ function repaint() {
     for (var i = 0; i < pieces.length; i++) {
         if (piecesPaint[i] === 1) {
             stage.drawImage(pieces[i], piecePosition[i].opx, piecePosition[i].opy, piecePosition[i].wi, piecePosition[i].he);
-        }
+            
+           }
 
     }
 }
@@ -241,5 +244,5 @@ function rotate(event) {
     stage.rotate(piecePosition[currentpiece].rad);
     //stage.restore();
     repaint();
-    console.log("obteniendo la posicione del scroll " + event.wheelDelta + " -- " + pieces[currentpiece].src + " -- rad " + currentRad);
+    console.log("get scroll value " + event.wheelDelta + " -- " + pieces[currentpiece].src + " -- rad " + currentRad);
 }
