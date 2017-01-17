@@ -33,11 +33,12 @@ var difx, dify;
 function init() {
     var can = document.getElementById("canvaspic");
     canvasHeight = can.height;
+    console.log('Cavan heigth '+canvasHeight);
     canvasWidth = can.width;
     var osp = document.getElementById("art");
     console.log("natural w/h " + osp.naturalWidth + " / " + osp.naturalHeight);
     //factor = 0.32;
-    factor = osp.naturalHeight / 600;
+    factor = osp.naturalHeight / canvasHeight;
     console.log("factor  " + factor);
     //init canvas wiht initioals dimentions  
     getCanvan();
@@ -77,8 +78,8 @@ function print() {
     var prx, pry, wi, he;
     for (i = 0; i < pieces.length; i++) {
 
-        prx = Math.floor(Math.random() * (625 / 2));
-        pry = Math.floor(Math.random() * (600 / 2));
+        prx = Math.floor(Math.random() * (canvasWidth / 2));
+        pry = Math.floor(Math.random() * (canvasHeight / 2));
         wi = Math.floor(pieces[i].width / factor);
         he = Math.floor(pieces[i].height / factor);
 //        console.log("current "+pieces[i].width+" / "+pieces[i].height 
