@@ -126,7 +126,7 @@ function getCanvan() {
     //document.onmousemove =overCanvas;
     canvas.onmousedown = mousePosition;
     canvas.onmousemove = pintDrag;
-    canvas.onmousewheel = rotate;
+//    canvas.onmousewheel = rotate;
     canvas.addEventListener("mouseup", function () {
         //console.log("Drag disable");
         dragable = 0;
@@ -148,6 +148,9 @@ function selectedImage(e) {
             e.style.border="3px solid white";
             piceTEm = pieces[i];
             ppt = piecePosition[i];
+            if(e.which === 2){
+                console.log("Derecho =))");
+            }
         } else {
             pieceTem.push(pieces[i]);
             piecePosiTem.push(piecePosition[i]);
@@ -246,4 +249,33 @@ function rotate(event) {
     //stage.restore();
     repaint();
     console.log("get scroll value " + event.wheelDelta + " -- " + pieces[currentpiece].src + " -- rad " + currentRad);
+}
+function deleteImage(re){
+    var pieceTem = [];
+    var piecePiTem = [];
+    var piecePosiTem = [];
+    var ppt;
+    var piceTEm;
+    //var ptp;
+    for (i = 0; i < pieces.length; i++) {
+        if (e.id === pieces[i].id) {
+            //console.log("Aqui tambien podria cambiar la opacidad de la imagen ??? "+e.id);
+            e.style.opacity = "1";
+            e.style.border="0px solid white";
+            piceTEm = pieces[i];
+            ppt = piecePosition[i];
+        } else {
+            pieceTem.push(pieces[i]);
+            piecePosiTem.push(piecePosition[i]);
+            piecePiTem.push(piecesPaint[i]);
+            pieces[i].style.border="0px";
+        }
+    }
+    piecePiTem.push(0);
+    pieceTem.push(piceTEm);
+    piecePosiTem.push(ppt);
+    piecePosition = piecePosiTem;
+    pieces = pieceTem;
+    piecesPaint = piecePiTem;
+    repaint();
 }
