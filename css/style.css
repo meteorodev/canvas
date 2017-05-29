@@ -15,7 +15,7 @@ and open the template in the editor.
 
 
 body{
-    background: #050505;
+    background: #fff;/*#050505;*/
 }
 
 .canvasC{
@@ -52,4 +52,8 @@ body{
 }
 .fb-share-button{
     margin-left: 245px;
+}
+#canvasContainer1{
+    visibility:hidden;
+    display: none;
 }
