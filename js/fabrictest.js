@@ -62,29 +62,54 @@ function addrempiece(e) {
     imgadd = document.getElementById("piece" + nid);
     if (action === 'a') {
         e.id = "e" + nid;
-        el.src = "img/icons/e.png"; 
-        tope = Math.random()*canvasWidth;
+        el.src = "img/icons/e.png";
+        tope = Math.random() * canvasWidth;
+        console.log(tope);
         imgSelected = new fabric.Image(imgadd, {
             left: 100,
             top: 200,
             angle: 00//,
-            //opacity: 0.85
+                    //opacity: 0.85
         });
         piecesPaint.push(imgSelected);
         can.add(imgSelected);
     } else {
         e.id = "a" + nid;
         el.src = "img/icons/a.png";
-        console.log(can.item(nid));
-        can.remove(imgSelected);
+        console.log("****************************************+");
+        console.log("item  " + can.item(0));
+        //can.setActiveObject(can.item(1));
+        console.log("active " + can.getActiveObject(can.item(0)));
+        //can.remove(imgSelected);
+        var idc="piece"+nid;
+        //try to select by id
+        can.forEachObject(function (obj) {
+            if (obj.id && obj.id === idc) {
+                obj.set('active', true);
+            }
+        });
+        console.log("active " + can.getActiveObject(can.item(0)));
+        console.log("*****************************************");
     }
-    console.log("numero de objetos "+can.isEmpty()+" pieces "+piecesPaint.length);
+    var objs = can.getObjects().map(function (o) {
+        return o.set('active', true);
+    });
+
+    console.log("numero de objetos " + objs.length + " pieces " + piecesPaint.length);
     for (var i = 0; i < piecesPaint.length; i++) {
         console.log(piecesPaint[i].oCoords.bl);
+        console.log(objs[i]);
     }
-    //can.renderAll.bind(can);
-    
 
+}
+// select all objects
+function deleteObjects() {
+    var activeObject = can.getActiveObject();
+    if (activeObject) {
+        if (confirm('Are you sure active?')) {
+            can.remove(activeObject);
+        }
+    }
 }
 
 
