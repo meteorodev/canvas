@@ -15,12 +15,19 @@ and open the template in the editor.
 
 
 body{
-    background: #fff;/*#050505;*/
+    background: #050505;
 }
 
 .canvasC{
     border: thin solid; 
     display: inline-block;
+    border: 1px solid black;
+}
+.canvasCw{
+    border: thin solid; 
+    display: inline-block;
+    border: 1px solid black;
+    background: white;
 }
 .artC{
     position: fixed;

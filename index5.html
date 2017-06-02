@@ -19,22 +19,82 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
-        <script src="js/merge.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.11/fabric.min.js"></script>
+        <script src="js/fabrictest.js" type="text/javascript"></script>
     </head>
     <body onload="init();">
+        <div id="canvasContainer1" class="50">                
+            <img class="min" id="piece1" src="img/pic5/1.png" alt="" />  
+            <img class="min" id="piece2" src="img/pic5/2.png" alt="" />         
+            <img class="min" id="piece3" src="img/pic5/3.png" alt="" />               
+            <img class="min" id="piece4" src="img/pic5/4.png" alt="" />                    
+            <img class="min" id="piece5" src="img/pic5/5.png" alt="" />                    
+            <img class="min" id="piece6" src="img/pic5/6.png" alt="" />                    
+            <img class="min" id="piece7" src="img/pic5/7.png" alt="" />                    
+            <img class="min" id="piece8" src="img/pic5/8.png" alt="" />
+            <img class="min" id="piece9" src="img/pic5/9.png" alt="" />  
+            <img class="min" id="piece10" src="img/pic5/10.png" alt="" />         
+            <img class="min" id="piece11" src="img/pic5/11.png" alt="" />               
+            <img class="min" id="piece12" src="img/pic5/12.png" alt="" />                    
+            <img class="min" id="piece13" src="img/pic5/13.png" alt="" />                    
+            <img class="min" id="piece14" src="img/pic5/14.png" alt="" />                    
+            <img class="min" id="piece15" src="img/pic5/15.png" alt="" />                    
+            <img class="min" id="piece16" src="img/pic5/16.png" alt="" />  
+            <img class="min" id="piece17" src="img/pic5/17.png" alt="" />                    
+            <img class="min" id="piece18" src="img/pic5/18.png" alt="" />                    
+            <img class="min" id="piece19" src="img/pic5/19.png" alt="" />                    
+            <img class="min" id="piece20" src="img/pic5/20.png" alt="" />
+            <img class="min" id="piece21" src="img/pic5/21.png" alt="" />               
+            <img class="min" id="piece22" src="img/pic5/22.png" alt="" />                    
+            <img class="min" id="piece23" src="img/pic5/23.png" alt="" />                    
+            <img class="min" id="piece24" src="img/pic5/24.png" alt="" />                    
+            <img class="min" id="piece25" src="img/pic5/25.png" alt="" />                    
+            <img class="min" id="piece26" src="img/pic5/26.png" alt="" />  
+            <img class="min" id="piece27" src="img/pic5/27.png" alt="" />                    
+            <img class="min" id="piece28" src="img/pic5/28.png" alt="" />                    
+            <img class="min" id="piece29" src="img/pic5/29.png" alt="" />                    
+            <img class="min" id="piece30" src="img/pic5/30.png" alt="" />
+            <img class="min" id="piece31" src="img/pic5/31.png" alt="" />               
+            <img class="min" id="piece32" src="img/pic5/32.png" alt="" />                    
+            <img class="min" id="piece33" src="img/pic5/33.png" alt="" />                    
+            <img class="min" id="piece34" src="img/pic5/34.png" alt="" />                    
+            <img class="min" id="piece35" src="img/pic5/35.png" alt="" />                    
+            <img class="min" id="piece36" src="img/pic5/36.png" alt="" />  
+            <img class="min" id="piece37" src="img/pic5/37.png" alt="" />                    
+            <img class="min" id="piece38" src="img/pic5/38.png" alt="" />                    
+            <img class="min" id="piece39" src="img/pic5/39.png" alt="" />                    
+            <img class="min" id="piece40" src="img/pic5/40.png" alt="" />
+            <img class="min" id="piece41" src="img/pic5/41.png" alt="" />               
+            <img class="min" id="piece42" src="img/pic5/42.png" alt="" />                    
+            <img class="min" id="piece43" src="img/pic5/43.png" alt="" />                    
+            <img class="min" id="piece44" src="img/pic5/44.png" alt="" />                    
+            <img class="min" id="piece45" src="img/pic5/45.png" alt="" />                    
+            <img class="min" id="piece46" src="img/pic5/46.png" alt="" />  
+            <img class="min" id="piece47" src="img/pic5/47.png" alt="" />                    
+            <img class="min" id="piece48" src="img/pic5/48.png" alt="" />                    
+            <img class="min" id="piece49" src="img/pic5/49.png" alt="" />                    
+            <img class="min" id="piece50" src="img/pic5/50.png" alt="" />
+        </div>
         <div id="container">
-
             <div id="canvasContainer" class="canvasC" >
-                <canvas id="canvaspic" width="625" height="600" style="border: 1px solid black;">
-
-                </canvas>
+                <canvas id="canvaspic" width="625" height="600" style="border: 1px solid black;">                </canvas>
             </div>
             <div id="artContainer" class="artC" >
-                
                 <img id="art" src="img/pic5/pic5.png" alt="7" width="325" height="300"/> 
+                <img id="a1" src="img/icons/a.png" alt="Agregar" onclick="addrempiece(this);" 
+                     style="position: absolute;top: 2px; left: 2px;"  />  
+                <img id="a4" src="img/icons/a.png" alt="Agregar" onclick="addrempiece(this);" 
+                     style="position: absolute;top: 2px; left: 160px;" />         
+                <img id="a2" src="img/icons/a.png" alt="Agregar" onclick="addrempiece(this);" 
+                     style="position: absolute;top: 102px; left: 2px;" />               
+                <img id="a5" src="img/icons/a.png" alt="Agregar" onclick="addrempiece(this);" 
+                     style="position: absolute;top: 102px; left: 160px;" />                    
+                <img id="a3" src="img/icons/a.png" alt="Agregar" onclick="addrempiece(this);" 
+                     style="position: absolute;top: 202px; left: 2px;" />                    
+                <img id="a6" src="img/icons/a.png" alt="Agregar" onclick="addrempiece(this);" 
+                     style="position: absolute;top: 202px; left: 160px;" />
                 <div>
                     <a href="./index4.html"><img class="btn" src="img/btn/bant.png" alt=""/></a>
-                    
                     <a href="./index2.html"><img class="btn" src="img/btn/bsig.png" alt=""/></a>
                     <div id="fb-root"></div>
                     <script>
@@ -55,59 +115,6 @@
                 </div>
             </div>
 
-
-            <div id="canvasContainer1" class="72">                
-                <img class="min" id="piece1" src="img/pic5/1.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>  
-                <img class="min" id="piece2" src="img/pic5/2.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>         
-                <img class="min" id="piece3" src="img/pic5/3.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>               
-                <img class="min" id="piece4" src="img/pic5/4.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>                    
-                <img class="min" id="piece5" src="img/pic5/5.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>                    
-                <img class="min" id="piece6" src="img/pic5/6.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>                    
-                <img class="min" id="piece7" src="img/pic5/7.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>                    
-                <img class="min" id="piece8" src="img/pic5/8.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>
-                <img class="min" id="piece9" src="img/pic5/9.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>  
-                <img class="min" id="piece10" src="img/pic5/10.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>         
-                <img class="min" id="piece11" src="img/pic5/11.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>               
-                <img class="min" id="piece12" src="img/pic5/12.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>                    
-                <img class="min" id="piece13" src="img/pic5/13.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>                    
-                <img class="min" id="piece14" src="img/pic5/14.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>                    
-                <img class="min" id="piece15" src="img/pic5/15.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>                    
-                <img class="min" id="piece16" src="img/pic5/16.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>  
-                <img class="min" id="piece17" src="img/pic5/17.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>                    
-                <img class="min" id="piece18" src="img/pic5/18.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>                    
-                <img class="min" id="piece19" src="img/pic5/19.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>                    
-                <img class="min" id="piece20" src="img/pic5/20.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>
-                <img class="min" id="piece21" src="img/pic5/21.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>               
-                <img class="min" id="piece22" src="img/pic5/22.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>                    
-                <img class="min" id="piece23" src="img/pic5/23.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>                    
-                <img class="min" id="piece24" src="img/pic5/24.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>                    
-                <img class="min" id="piece25" src="img/pic5/25.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>                    
-                <img class="min" id="piece26" src="img/pic5/26.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>  
-                <img class="min" id="piece27" src="img/pic5/27.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>                    
-                <img class="min" id="piece28" src="img/pic5/28.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>                    
-                <img class="min" id="piece29" src="img/pic5/29.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>                    
-                <img class="min" id="piece30" src="img/pic5/30.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>
-                <img class="min" id="piece31" src="img/pic5/31.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>               
-                <img class="min" id="piece32" src="img/pic5/32.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>                    
-                <img class="min" id="piece33" src="img/pic5/33.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>                    
-                <img class="min" id="piece34" src="img/pic5/34.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>                    
-                <img class="min" id="piece35" src="img/pic5/35.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>                    
-                <img class="min" id="piece36" src="img/pic5/36.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>  
-                <img class="min" id="piece37" src="img/pic5/37.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>                    
-                <img class="min" id="piece38" src="img/pic5/38.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>                    
-                <img class="min" id="piece39" src="img/pic5/39.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>                    
-                <img class="min" id="piece40" src="img/pic5/40.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>
-                <img class="min" id="piece41" src="img/pic5/41.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>               
-                <img class="min" id="piece42" src="img/pic5/42.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>                    
-                <img class="min" id="piece43" src="img/pic5/43.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>                    
-                <img class="min" id="piece44" src="img/pic5/44.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>                    
-                <img class="min" id="piece45" src="img/pic5/45.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>                    
-                <img class="min" id="piece46" src="img/pic5/46.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>  
-                <img class="min" id="piece47" src="img/pic5/47.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>                    
-                <img class="min" id="piece48" src="img/pic5/48.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>                    
-                <img class="min" id="piece49" src="img/pic5/49.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>                    
-                <img class="min" id="piece50" src="img/pic5/50.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>
-            </div>
         </div>
     </body>
 </html>      

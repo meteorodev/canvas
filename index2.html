@@ -19,22 +19,40 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
-        <script src="js/merge.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.11/fabric.min.js"></script>
+        <script src="js/fabrictest.js" type="text/javascript"></script>
     </head>
     <body onload="init();">
+        <div id="canvasContainer1" class="5">                
+            <img class="min" id="piece1" src="img/pic2/1.png" alt="" />  
+            <img class="min" id="piece2" src="img/pic2/2.png" alt="" />         
+            <img class="min" id="piece3" src="img/pic2/3.png" alt="" />               
+            <img class="min" id="piece4" src="img/pic2/4.png" alt="" />                    
+            <img class="min" id="piece5" src="img/pic2/5.png" alt="" />                    
+            <img class="min" id="piece6" src="img/pic2/6.png" alt="" />                    
+        </div>
         <div id="container">
 
-            <div id="canvasContainer" class="canvasC" >
-                <canvas id="canvaspic" width="625" height="600" style="border: 1px solid black;">
-
-                </canvas>
+            <div id="canvasContainer" class="canvasC" >                
+                <canvas id="canvaspic" width="625" height="600" style="border: 1px solid black;"></canvas>
             </div>
             <div id="artContainer" class="artC" >
-                
-                <img id="art" src="img/pic2/pic2.png" alt="12" width="325" height="300"/> 
+                <img id="art" src="img/pic2/pic2.png" alt="12" width="325" height="300"/>
+                <img id="a1" src="img/icons/a.png" alt="Agregar" onclick="addrempiece(this);" 
+                         style="position: absolute;top: 2px; left: 2px;"  />  
+                    <img id="a4" src="img/icons/a.png" alt="Agregar" onclick="addrempiece(this);" 
+                         style="position: absolute;top: 2px; left: 160px;" />         
+                    <img id="a2" src="img/icons/a.png" alt="Agregar" onclick="addrempiece(this);" 
+                         style="position: absolute;top: 102px; left: 2px;" />               
+                    <img id="a5" src="img/icons/a.png" alt="Agregar" onclick="addrempiece(this);" 
+                         style="position: absolute;top: 102px; left: 160px;" />                    
+                    <img id="a3" src="img/icons/a.png" alt="Agregar" onclick="addrempiece(this);" 
+                         style="position: absolute;top: 202px; left: 2px;" />                    
+                    <img id="a6" src="img/icons/a.png" alt="Agregar" onclick="addrempiece(this);" 
+                         style="position: absolute;top: 202px; left: 160px;" />
                 <div>
                     <a href="./index5.html"><img class="btn" src="img/btn/bant.png" alt=""/></a>
-                    
+
                     <a href="./index3.html"><img class="btn" src="img/btn/bsig.png" alt=""/></a>
                     <div id="fb-root"></div>
                     <script>
@@ -53,22 +71,6 @@
                         <a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Compartir</a>
                     </div>
                 </div>
-            </div>
-
-
-            <div id="canvasContainer1" class="5">                
-                <img class="min" id="piece1" src="img/pic2/1.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>  
-                <img class="min" id="piece2" src="img/pic2/2.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>         
-                <img class="min" id="piece3" src="img/pic2/3.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>               
-                <img class="min" id="piece4" src="img/pic2/4.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>                    
-                <img class="min" id="piece5" src="img/pic2/5.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>                    
-                <img class="min" id="piece6" src="img/pic2/6.png" alt="" onclick="selectedImage(this);" oncontextmenu="deleteImage(this); return false"/>                    
-                <!--img class="min" id="piece7" src="img/pic2/7.png" alt="" onclick="selectedImage(this);"/> 
-                <img class="min" id="piece8" src="img/pic2/8.png" alt="" onclick="selectedImage(this);"/>
-                <img class="min" id="piece9" src="img/pic2/9.png" alt="" onclick="selectedImage(this);"/>  
-                <img class="min" id="piece10" src="img/pic2/10.png" alt="" onclick="selectedImage(this);"/>         
-                <img class="min" id="piece11" src="img/pic2/11.png" alt="" onclick="selectedImage(this);"/>               
-                <img class="min" id="piece12" src="img/pic2/12.png" alt="" onclick="selectedImage(this);"/-->
             </div>
         </div>
     </body>
