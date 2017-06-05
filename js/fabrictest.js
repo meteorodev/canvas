@@ -39,18 +39,25 @@ function addrempiece(e) {
     var el = document.getElementById(e.id);
     var imgadd;
     var action = e.id.charAt(0);
-    var nid = e.id.charAt(1);
+    var nid = e.id.substr(1);
     var objs;
     var idc = "piece" + nid;
-    var posc=0;
+    var posc = 0;
     imgadd = document.getElementById(idc);
+    if (np===10){
+        imgadd.height = imgadd.height * 0.72;
+        imgadd.width = imgadd.width * 0.72;
+    }
+    console.log(imgadd.height);
     if (action === 'a') {
         e.id = "e" + nid;
         el.src = "img/icons/e.png";
-        //tope =  Math.round(Math.random() * (canvasHeight/2 - 1));
+        ttop = Math.round(Math.random() * (canvasWidth / 2 - 1));
+        tleft = Math.round(Math.random() * (canvasHeight / 2 - 1));
+        console.log(ttop + " -- " + tleft);
         imgSelected = new fabric.Image(imgadd, {
-            left: Math.round(Math.random() * (canvasWidth / 2 - 1)),
-            top: Math.round(Math.random() * (canvasHeight / 2 - 1)),
+            left: ttop,
+            top: tleft,
             angle: 00,
             id: idc
                     //opacity: 0.85
@@ -67,9 +74,9 @@ function addrempiece(e) {
             return o.set('active', true);
         });
         for (var i = 0; i < objs.length; i++) {
-            if(idc === objs[i].id){
-                 can.setActiveObject(can.item(i));
-                 console.log("pos bus "+i+" id "+can.item(i).id);
+            if (idc === objs[i].id) {
+                can.setActiveObject(can.item(i));
+                console.log("pos bus " + i + " id " + can.item(i).id);
             }
         }
         can.remove(can.getActiveObject());
@@ -80,6 +87,8 @@ function addrempiece(e) {
 
 }
 
-
-
+// cahnge size from a e action.
+function overMe(){
+    
+}
 

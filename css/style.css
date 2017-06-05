@@ -13,10 +13,10 @@ and open the template in the editor.
 */
 
 
-
+/*
 body{
     background: #050505;
-}
+}*/
 
 .canvasC{
     border: thin solid; 
@@ -64,3 +64,4 @@ body{
     visibility:hidden;
     display: none;
 }
+

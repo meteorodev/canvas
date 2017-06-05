@@ -21,6 +21,17 @@
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.11/fabric.min.js"></script>
         <script src="js/fabrictest.js" type="text/javascript"></script>
+        <style>
+            .aebtn{
+                opacity: 0.4;
+                height: 16px;
+            }
+            .aebtn:hover {
+                opacity: 1;
+                height: 25px;
+
+            }
+        </style>
     </head>
     <body onload="init();">
         <div id="canvasContainer1" class="10">                
@@ -38,22 +49,30 @@
         <div id="container">
 
             <div id="canvasContainer" class="canvasC" >
-                <canvas id="canvaspic" width="600" height="410" style="border:5px solid white; background-color: white">                </canvas>
+                <canvas id="canvaspic" width="600" height="410" ></canvas>
             </div>
             <div id="artContainer" class="artC" >
                 <img id="art" src="img/pic4/pic4.png" alt="8" width="325" height="190"/> 
-                <img id="a1" src="img/icons/a.png" alt="Agregar" onclick="addrempiece(this);" 
-                     style="position: absolute;top: 2px; left: 2px;"  />  
-                <img id="a4" src="img/icons/a.png" alt="Agregar" onclick="addrempiece(this);" 
-                     style="position: absolute;top: 2px; left: 160px;" />         
-                <img id="a2" src="img/icons/a.png" alt="Agregar" onclick="addrempiece(this);" 
-                     style="position: absolute;top: 80px; left: 2px;" />               
-                <img id="a5" src="img/icons/a.png" alt="Agregar" onclick="addrempiece(this);" 
-                     style="position: absolute;top: 80px; left: 160px;" />                    
-                <img id="a3" src="img/icons/a.png" alt="Agregar" onclick="addrempiece(this);" 
-                     style="position: absolute;top: 160px; left: 2px;" />                    
-                <img id="a6" src="img/icons/a.png" alt="Agregar" onclick="addrempiece(this);" 
-                     style="position: absolute;top: 160px; left: 160px;" />
+                <img id="a1" src="img/icons/a.png" alt="Agregar" class="aebtn" onclick="addrempiece(this);" 
+                     style="position: absolute;top: 80px; left: 2px;"  />  
+                <img id="a2" src="img/icons/a.png" alt="Agregar" class="aebtn" onclick="addrempiece(this);" 
+                     style="position: absolute;top: 60px; left: 35px;" />         
+                <img id="a3" src="img/icons/a.png" alt="Agregar" class="aebtn" onclick="addrempiece(this);" 
+                     style="position: absolute;top: 40px; left: 73px;" />               
+                <img id="a4" src="img/icons/a.png" alt="Agregar" class="aebtn" onclick="addrempiece(this);" 
+                     style="position: absolute;top: 90px; left: 79px;" />                    
+                <img id="a5" src="img/icons/a.png" alt="Agregar" class="aebtn" onclick="addrempiece(this);" 
+                     style="position: absolute;top: 160px; left: 97px;" />                    
+                <img id="a6" src="img/icons/a.png" alt="Agregar" class="aebtn" onclick="addrempiece(this);" 
+                     style="position: absolute;top: 125px; left: 135px;" />
+                <img id="a7" src="img/icons/a.png" alt="Agregar" class="aebtn" onclick="addrempiece(this);" 
+                     style="position: absolute;top: 90px; left: 147px;" />               
+                <img id="a8" src="img/icons/a.png" alt="Agregar" class="aebtn" onclick="addrempiece(this);" 
+                     style="position: absolute;top: 90px; left: 180px;" />                    
+                <img id="a9" src="img/icons/a.png" alt="Agregar" class="aebtn" onclick="addrempiece(this);" 
+                     style="position: absolute;top: 20px; left: 196px;" />                    
+                <img id="a10" src="img/icons/a.png" alt="Agregar" class="aebtn" onclick="addrempiece(this);" 
+                     style="position: absolute;top: 20px; left: 250px;" />
                 <div>
                     <a href="./index3.html"><img class="btn" src="img/btn/bant.png" alt=""/></a>
                     <a href="./index5.html"><img class="btn" src="img/btn/bsig.png" alt=""/></a>
