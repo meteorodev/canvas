@@ -34,6 +34,15 @@ body{
     border: thin solid;
     margin-bottom: 10px;
 }
+.aebtn{
+    opacity: 0.0;
+    height: 16px;
+}
+.aebtn:hover {
+    opacity: 1;
+    height: 25px;
+
+}
 
 .min{
     border: thin solid;

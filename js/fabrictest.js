@@ -44,7 +44,7 @@ function addrempiece(e) {
     var idc = "piece" + nid;
     var posc = 0;
     imgadd = document.getElementById(idc);
-    if (np===10){
+    if (np === 10) {
         imgadd.height = imgadd.height * 0.72;
         imgadd.width = imgadd.width * 0.72;
     }
@@ -88,7 +88,35 @@ function addrempiece(e) {
 }
 
 // cahnge size from a e action.
-function overMe(){
-    
+function overMe() {
+    var x = document.getElementsByClassName("aebtn");
+    for (let i = 0; i < x.length; i++) {
+        x[i].style.opacity = "0.4";
+        x[i].style.height = "16px";
+        x[i].style.width = "16px";
+    }
+}
+function outMe() {
+    var x = document.getElementsByClassName("aebtn");
+    for (let i = 0; i < x.length; i++) {
+        x[i].style.opacity = "0.0";
+    }
 }
 
+function makeMeBig(x) {
+    console.log("pos [ "+x.style.top+" : "+ x.style.left+" ]");
+    x.style.top = (toNu(x.style.top) - 4)+"px";
+    x.style.left = (toNu(x.style.left) - 4)+"px";
+    console.log("new pos [ "+x.style.top+" : "+ x.style.left+" ]");
+    x.style.opacity = "1.0";
+    x.style.height = "25px";
+    x.style.width = "25px";
+}
+function makeMeNormal(x){
+    x.style.top = (toNu(x.style.top) + 4) +"px";
+    x.style.left = (toNu(x.style.left) + 4) +"px";
+}
+function toNu(cade){
+    let vtopN = Number(cade.substring(0,cade.length-2));
+    return vtopN;
+}
